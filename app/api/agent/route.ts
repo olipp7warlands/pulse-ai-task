@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import Anthropic from '@anthropic-ai/sdk'
 import sql from '@/lib/db'
 import { AgentResponse } from '@/lib/types'
