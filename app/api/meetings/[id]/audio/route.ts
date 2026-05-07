@@ -1,0 +1,96 @@
+import { NextResponse } from 'next/server'
+import sql from '@/lib/db'
+
+export async function POST(req: Request, { params }: { params: { id: string } }) {
+  const formData = await req.formData()
+  const file = formData.get('audio') as File | null
+  if (!file) return NextResponse.json({ error: 'no audio file' }, { status: 400 })
+
+  const buffer = Buffer.from(await file.arrayBuffer())
+  const sizeMB = buffer.length / (1024 * 1024)
+  if (sizeMB > 25) {
+    return NextResponse.json({ error: `archivo demasiado grande (${sizeMB.toFixed(1)} MB, máx 25 MB)` }, { status: 400 })
+  }
+
+  const base64 = buffer.toString('base64')
+  const mediaType = file.type || 'audio/mp4'
+
+  // Analyze with Claude
+  const claudeRes = await fetch('https://api.anthropic.com/v1/messages', {
+    method: 'POST',
+    headers: {
+      'x-api-key': process.env.ANTHROPIC_API_KEY!,
+      'anthropic-version': '2023-06-01',
+      'content-type': 'application/json',
+    },
+    body: JSON.stringify({
+      model: 'claude-sonnet-4-6',
+      max_tokens: 2000,
+      messages: [{
+        role: 'user',
+        content: [
+          { type: 'document', source: { type: 'base64', media_type: mediaType, data: base64 } },
+          {
+            type: 'text',
+            text: 'Analiza esta reunión y devuelve JSON exacto sin texto adicional con: { "transcript": "transcripción en español", "summary": "resumen 2-3 frases máximo 60 palabras", "suggested_tasks": [{ "title": "tarea concreta accionable", "priority": "high|medium|low", "project_hint": "nombre del proyecto si se menciona" }] }. Máximo 5 tareas.',
+          },
+        ],
+      }],
+    }),
+  })
+
+  if (!claudeRes.ok) {
+    const err = await claudeRes.text()
+    console.error('Claude error:', err)
+    return NextResponse.json({ error: 'análisis de audio fallido', details: err }, { status: 500 })
+  }
+
+  const claudeData = await claudeRes.json() as { content: { type: string; text: string }[] }
+  const rawText = claudeData.content?.[0]?.text ?? ''
+
+  let parsed: { transcript: string; summary: string; suggested_tasks: { title: string; priority: string; project_hint?: string }[] }
+  try {
+    const m = rawText.match(/\{[\s\S]*\}/)
+    parsed = JSON.parse(m ? m[0] : rawText)
+  } catch {
+    return NextResponse.json({ error: 'respuesta de IA inválida', raw: rawText }, { status: 500 })
+  }
+
+  // Save transcript + summary
+  await sql`UPDATE meetings SET transcript = ${parsed.transcript}, summary = ${parsed.summary} WHERE id = ${params.id}`
+
+  // Replace suggested tasks
+  await sql`DELETE FROM suggested_tasks WHERE meeting_id = ${params.id}`
+  for (const task of (parsed.suggested_tasks ?? [])) {
+    let projectId: number | null = null
+    if (task.project_hint) {
+      const [proj] = await sql`SELECT id FROM projects WHERE name ILIKE ${`%${task.project_hint}%`} LIMIT 1`
+      projectId = proj?.id ?? null
+    }
+    await sql`
+      INSERT INTO suggested_tasks (meeting_id, title, priority, project_id)
+      VALUES (${params.id}, ${task.title}, ${task.priority ?? 'medium'}, ${projectId})
+    `
+  }
+
+  // Upload audio to Supabase Storage (optional)
+  let audioUrl: string | null = null
+  const supabaseUrl = process.env.SUPABASE_URL
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY
+  if (supabaseUrl && supabaseKey) {
+    const fileName = `meeting-${params.id}-${Date.now()}.m4a`
+    const uploadRes = await fetch(`${supabaseUrl}/storage/v1/object/meetings-audio/${fileName}`, {
+      method: 'POST',
+      headers: { 'Authorization': `Bearer ${supabaseKey}`, 'Content-Type': file.type || 'audio/m4a' },
+      body: buffer,
+    })
+    if (uploadRes.ok) {
+      audioUrl = `${supabaseUrl}/storage/v1/object/public/meetings-audio/${fileName}`
+      await sql`UPDATE meetings SET audio_url = ${audioUrl} WHERE id = ${params.id}`
+    }
+  }
+
+  const [meeting] = await sql`SELECT * FROM meetings WHERE id = ${params.id}`
+  const suggestedTasks = await sql`SELECT * FROM suggested_tasks WHERE meeting_id = ${params.id}`
+  return NextResponse.json({ ...meeting, suggestedTasks })
+}

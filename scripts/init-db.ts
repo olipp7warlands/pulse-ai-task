@@ -57,6 +57,43 @@ async function main() {
     )
   `
 
+  await sql`
+    CREATE TABLE IF NOT EXISTS meetings (
+      id SERIAL PRIMARY KEY,
+      title TEXT NOT NULL,
+      date DATE NOT NULL,
+      start_time TIME,
+      end_time TIME,
+      notes TEXT,
+      audio_url TEXT,
+      transcript TEXT,
+      summary TEXT,
+      project_id INTEGER REFERENCES projects(id) ON DELETE SET NULL,
+      created_at TIMESTAMP DEFAULT NOW()
+    )
+  `
+
+  await sql`
+    CREATE TABLE IF NOT EXISTS meeting_attendees (
+      id SERIAL PRIMARY KEY,
+      meeting_id INTEGER REFERENCES meetings(id) ON DELETE CASCADE,
+      name TEXT NOT NULL,
+      initials TEXT
+    )
+  `
+
+  await sql`
+    CREATE TABLE IF NOT EXISTS suggested_tasks (
+      id SERIAL PRIMARY KEY,
+      meeting_id INTEGER REFERENCES meetings(id) ON DELETE CASCADE,
+      title TEXT NOT NULL,
+      priority TEXT DEFAULT 'medium',
+      project_id INTEGER REFERENCES projects(id),
+      approved BOOLEAN DEFAULT false,
+      created_task_id INTEGER REFERENCES tasks(id)
+    )
+  `
+
   console.log('Tables created. Checking for seed data...')
 
   const { count } = (await sql`SELECT COUNT(*) as count FROM projects`)[0] as { count: string }
