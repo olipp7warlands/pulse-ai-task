@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #0e0c12;
+  --bg-outer: #0a0810;
+  --bg-card: #111018;
+  --bg-nav: #0a0810;
+  --border: #1a1228;
+  --border-input: #1e1428;
+  --text: #f1f1f1;
+  --text-card: #c8c0e0;
+  --text-muted: #2a1848;
+  --violet: #5b2af3;
+  --lavanda: #9474f6;
+  --soft: #ded8fa;
+  --turquoise: #67d7a8;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  height: 100%;
+  text-transform: lowercase;
+}
+
+.user-content {
+  text-transform: none;
+}
+
+input,
+textarea {
+  text-transform: none;
+}
+
+/* Noise texture overlay */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* Placeholder styling */
+textarea::placeholder {
+  font-style: italic;
+  font-weight: 300;
+  color: #2e2048;
+}
+
+input::placeholder {
+  font-style: italic;
+  font-weight: 300;
+  color: #2e2048;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a1228;
+  border-radius: 1px;
+}
+
+@layer utilities {
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
