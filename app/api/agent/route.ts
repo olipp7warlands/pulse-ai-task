@@ -3,6 +3,7 @@ export const dynamic = 'force-dynamic'
 import Anthropic from '@anthropic-ai/sdk'
 import sql from '@/lib/db'
 import { AgentResponse } from '@/lib/types'
+import { AgentInputSchema, AgentOutputSchema } from '@/lib/schemas'
 
 const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY })
 
@@ -208,11 +209,14 @@ async function buildContext(): Promise<string> {
 type HistoryMessage = { role: 'user' | 'assistant'; content: string }
 
 export async function POST(req: Request) {
-  const { message, history = [] } = await req.json() as { message: string; history?: HistoryMessage[] }
-
-  if (!message?.trim()) {
-    return new Response(JSON.stringify({ error: 'message required' }), { status: 400 })
+  const inputParsed = AgentInputSchema.safeParse(await req.json())
+  if (!inputParsed.success) {
+    return new Response(
+      JSON.stringify({ error: 'invalid input', details: inputParsed.error.flatten() }),
+      { status: 400, headers: { 'Content-Type': 'application/json' } }
+    )
   }
+  const { message, history } = inputParsed.data
 
   const context = await buildContext()
   const fullMessage = `contexto actual:\n${context}\n\nmensaje del usuario: ${message}`
@@ -230,22 +234,25 @@ export async function POST(req: Request) {
           messages: claudeMessages,
         })
         const raw = response.content[0]?.type === 'text' ? response.content[0].text : ''
-        let parsed: AgentResponse
+        let agentResponse: AgentResponse
         try {
           const m = raw.match(/\{[\s\S]*\}/)
-          parsed = JSON.parse(m ? m[0] : raw)
+          const outputResult = AgentOutputSchema.safeParse(JSON.parse(m ? m[0] : raw))
+          agentResponse = outputResult.success
+            ? outputResult.data
+            : { action: null, params: {}, message: raw }
         } catch {
-          parsed = { action: null, params: {}, message: raw }
+          agentResponse = { action: null, params: {}, message: raw }
         }
-        if (parsed.action) {
+        if (agentResponse.action) {
           try {
-            const result = await executeAction(parsed.action, parsed.params)
-            send({ type: 'action', action: parsed.action, label: result.label, color: result.color })
+            const result = await executeAction(agentResponse.action, agentResponse.params)
+            send({ type: 'action', action: agentResponse.action, label: result.label, color: result.color })
           } catch (err) {
             send({ type: 'action_error', message: err instanceof Error ? err.message : String(err) })
           }
         }
-        for (const char of parsed.message) {
+        for (const char of agentResponse.message) {
           send({ type: 'chunk', text: char })
           await new Promise(r => setTimeout(r, 8))
         }

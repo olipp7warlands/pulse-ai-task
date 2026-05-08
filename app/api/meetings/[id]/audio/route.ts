@@ -2,6 +2,8 @@ export const dynamic = 'force-dynamic'
 
 import { NextResponse } from 'next/server'
 import sql from '@/lib/db'
+import { type z } from 'zod'
+import { AudioAnalysisSchema } from '@/lib/schemas'
 
 export async function POST(req: Request, { params }: { params: { id: string } }) {
   const formData = await req.formData()
@@ -50,20 +52,28 @@ export async function POST(req: Request, { params }: { params: { id: string } })
   const claudeData = await claudeRes.json() as { content: { type: string; text: string }[] }
   const rawText = claudeData.content?.[0]?.text ?? ''
 
-  let parsed: { transcript: string; summary: string; suggested_tasks: { title: string; priority: string; project_hint?: string }[] }
+  const jsonMatch = rawText.match(/\{[\s\S]*\}/)
+  let audioData: z.infer<typeof AudioAnalysisSchema>
   try {
-    const m = rawText.match(/\{[\s\S]*\}/)
-    parsed = JSON.parse(m ? m[0] : rawText)
+    const rawJson = JSON.parse(jsonMatch ? jsonMatch[0] : rawText)
+    const result = AudioAnalysisSchema.safeParse(rawJson)
+    if (!result.success) {
+      return NextResponse.json(
+        { error: 'respuesta de IA con formato inválido', details: result.error.flatten() },
+        { status: 502 }
+      )
+    }
+    audioData = result.data
   } catch {
-    return NextResponse.json({ error: 'respuesta de IA inválida', raw: rawText }, { status: 500 })
+    return NextResponse.json({ error: 'respuesta de IA no es JSON válido', raw: rawText }, { status: 502 })
   }
 
   // Save transcript + summary
-  await sql`UPDATE meetings SET transcript = ${parsed.transcript}, summary = ${parsed.summary} WHERE id = ${params.id}`
+  await sql`UPDATE meetings SET transcript = ${audioData.transcript}, summary = ${audioData.summary} WHERE id = ${params.id}`
 
   // Replace suggested tasks
   await sql`DELETE FROM suggested_tasks WHERE meeting_id = ${params.id}`
-  for (const task of (parsed.suggested_tasks ?? [])) {
+  for (const task of audioData.suggested_tasks) {
     let projectId: number | null = null
     if (task.project_hint) {
       const [proj] = await sql`SELECT id FROM projects WHERE name ILIKE ${`%${task.project_hint}%`} LIMIT 1`
@@ -71,7 +81,7 @@ export async function POST(req: Request, { params }: { params: { id: string } })
     }
     await sql`
       INSERT INTO suggested_tasks (meeting_id, title, priority, project_id)
-      VALUES (${params.id}, ${task.title}, ${task.priority ?? 'medium'}, ${projectId})
+      VALUES (${params.id}, ${task.title}, ${task.priority}, ${projectId})
     `
   }
 
