@@ -1,0 +1,4077 @@
+{
+  "directed": false,
+  "multigraph": false,
+  "graph": {
+    "hyperedges": [
+      {
+        "id": "all_routes_sql",
+        "label": "All API Routes Use SQL Client",
+        "nodes": [
+          "api_activity_route",
+          "api_agent_route",
+          "api_links_route",
+          "api_links_id_route",
+          "api_meetings_route",
+          "api_meetings_id_route",
+          "api_meetings_approve_tasks_route",
+          "api_meetings_audio_route",
+          "lib_db"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "lib/db.ts"
+      },
+      {
+        "id": "cors_coverage",
+        "label": "Middleware Covers All API Routes",
+        "nodes": [
+          "middleware",
+          "api_activity_route",
+          "api_agent_route",
+          "api_links_route",
+          "api_meetings_route"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "middleware.ts"
+      },
+      {
+        "id": "meetings_pipeline",
+        "label": "Meetings Audio Pipeline",
+        "nodes": [
+          "api_meetings_audio_route",
+          "anthropic_claude_api",
+          "db_table_suggested_tasks",
+          "api_meetings_approve_tasks_route",
+          "db_table_tasks"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/api/meetings/[id]/audio/route.ts"
+      },
+      {
+        "id": "chat_pipeline",
+        "label": "Chat SSE Agent Pipeline",
+        "nodes": [
+          "chat_page",
+          "api_agent_route",
+          "anthropic_claude_api",
+          "db_table_tasks",
+          "db_table_projects"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "app/page.tsx"
+      },
+      {
+        "id": "db_schema_cascade",
+        "label": "DB FK Cascade: projects->tasks->links",
+        "nodes": [
+          "db_table_projects",
+          "db_table_tasks",
+          "db_table_links",
+          "db_table_suggested_tasks"
+        ],
+        "relation": "participate_in",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "scripts/init-db.ts"
+      },
+      {
+        "id": "types_consumed",
+        "label": "lib/types consumed by components and pages",
+        "nodes": [
+          "lib_types",
+          "type_project",
+          "type_task",
+          "type_priority",
+          "type_status",
+          "page_projects",
+          "component_project_chip",
+          "component_task_card",
+          "component_priority_tag"
+        ],
+        "relation": "implement",
+        "confidence": "EXTRACTED",
+        "confidence_score": 1.0,
+        "source_file": "lib/types.ts"
+      }
+    ]
+  },
+  "nodes": [
+    {
+      "label": "middleware.ts",
+      "file_type": "code",
+      "source_file": "middleware.ts",
+      "source_location": "L1",
+      "id": "middleware_ts",
+      "community": 8,
+      "norm_label": "middleware.ts"
+    },
+    {
+      "label": "middleware()",
+      "file_type": "code",
+      "source_file": "middleware.ts",
+      "source_location": "L4",
+      "id": "pm_app_middleware_middleware",
+      "community": 8,
+      "norm_label": "middleware()"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "middleware.ts",
+      "source_location": "L26",
+      "id": "pm_app_middleware_config",
+      "community": 8,
+      "norm_label": "config"
+    },
+    {
+      "label": "next-env.d.ts",
+      "file_type": "code",
+      "source_file": "next-env.d.ts",
+      "source_location": "L1",
+      "id": "next_env_d_ts",
+      "community": 13,
+      "norm_label": "next-env.d.ts"
+    },
+    {
+      "label": "next.config.mjs",
+      "file_type": "code",
+      "source_file": "next.config.mjs",
+      "source_location": "L1",
+      "id": "next_config_mjs",
+      "community": 9,
+      "norm_label": "next.config.mjs"
+    },
+    {
+      "label": "nextConfig",
+      "file_type": "code",
+      "source_file": "next.config.mjs",
+      "source_location": "L2",
+      "id": "pm_app_next_config_nextconfig",
+      "community": 9,
+      "norm_label": "nextconfig"
+    },
+    {
+      "label": "postcss.config.js",
+      "file_type": "code",
+      "source_file": "postcss.config.js",
+      "source_location": "L1",
+      "id": "postcss_config_js",
+      "community": 14,
+      "norm_label": "postcss.config.js"
+    },
+    {
+      "label": "run_detect.py",
+      "file_type": "code",
+      "source_file": "run_detect.py",
+      "source_location": "L1",
+      "id": "run_detect_py",
+      "community": 15,
+      "norm_label": "run_detect.py"
+    },
+    {
+      "label": "tailwind.config.ts",
+      "file_type": "code",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L1",
+      "id": "tailwind_config_ts",
+      "community": 10,
+      "norm_label": "tailwind.config.ts"
+    },
+    {
+      "label": "config",
+      "file_type": "code",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L3",
+      "id": "pm_app_tailwind_config_config",
+      "community": 10,
+      "norm_label": "config"
+    },
+    {
+      "label": "layout.tsx",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L1",
+      "id": "app_layout_tsx",
+      "community": 7,
+      "norm_label": "layout.tsx"
+    },
+    {
+      "label": "archivo",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L5",
+      "id": "app_layout_archivo",
+      "community": 7,
+      "norm_label": "archivo"
+    },
+    {
+      "label": "metadata",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L11",
+      "id": "app_layout_metadata",
+      "community": 7,
+      "norm_label": "metadata"
+    },
+    {
+      "label": "viewport",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L16",
+      "id": "app_layout_viewport",
+      "community": 7,
+      "norm_label": "viewport"
+    },
+    {
+      "label": "RootLayout()",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": "L22",
+      "id": "app_layout_rootlayout",
+      "community": 7,
+      "norm_label": "rootlayout()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L1",
+      "id": "app_page_tsx",
+      "community": 2,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "ActionColor",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L8",
+      "id": "app_page_actioncolor",
+      "community": 2,
+      "norm_label": "actioncolor"
+    },
+    {
+      "label": "ACTION_COLORS",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L10",
+      "id": "app_page_action_colors",
+      "community": 2,
+      "norm_label": "action_colors"
+    },
+    {
+      "label": "ACTION_COLORS_DARK",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L16",
+      "id": "app_page_action_colors_dark",
+      "community": 2,
+      "norm_label": "action_colors_dark"
+    },
+    {
+      "label": "ChatPage()",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": "L22",
+      "id": "app_page_chatpage",
+      "community": 2,
+      "norm_label": "chatpage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L1",
+      "id": "app_activity_page_tsx",
+      "community": 2,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "ActivityData",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L7",
+      "id": "activity_page_activitydata",
+      "community": 2,
+      "norm_label": "activitydata"
+    },
+    {
+      "label": "DOT_COLORS",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L22",
+      "id": "activity_page_dot_colors",
+      "community": 2,
+      "norm_label": "dot_colors"
+    },
+    {
+      "label": "ACTION_LABELS",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L31",
+      "id": "activity_page_action_labels",
+      "community": 2,
+      "norm_label": "action_labels"
+    },
+    {
+      "label": "TAG_STYLES",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L40",
+      "id": "activity_page_tag_styles",
+      "community": 2,
+      "norm_label": "tag_styles"
+    },
+    {
+      "label": "formatTime()",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L49",
+      "id": "activity_page_formattime",
+      "community": 2,
+      "norm_label": "formattime()"
+    },
+    {
+      "label": "SectionLabel()",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L63",
+      "id": "activity_page_sectionlabel",
+      "community": 2,
+      "norm_label": "sectionlabel()"
+    },
+    {
+      "label": "Donut()",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L74",
+      "id": "activity_page_donut",
+      "community": 2,
+      "norm_label": "donut()"
+    },
+    {
+      "label": "ProgressBar()",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L124",
+      "id": "activity_page_progressbar",
+      "community": 2,
+      "norm_label": "progressbar()"
+    },
+    {
+      "label": "ActivityPage()",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L137",
+      "id": "activity_page_activitypage",
+      "community": 2,
+      "norm_label": "activitypage()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/activity/route.ts",
+      "source_location": "L1",
+      "id": "app_api_activity_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "calcStreak()",
+      "file_type": "code",
+      "source_file": "app/api/activity/route.ts",
+      "source_location": "L6",
+      "id": "activity_route_calcstreak",
+      "community": 0,
+      "norm_label": "calcstreak()"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/activity/route.ts",
+      "source_location": "L26",
+      "id": "activity_route_get",
+      "community": 0,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L1",
+      "id": "app_api_agent_route_ts",
+      "community": 5,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "client",
+      "file_type": "code",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L7",
+      "id": "agent_route_client",
+      "community": 5,
+      "norm_label": "client"
+    },
+    {
+      "label": "executeAction()",
+      "file_type": "code",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L25",
+      "id": "agent_route_executeaction",
+      "community": 5,
+      "norm_label": "executeaction()"
+    },
+    {
+      "label": "buildContext()",
+      "file_type": "code",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L193",
+      "id": "agent_route_buildcontext",
+      "community": 5,
+      "norm_label": "buildcontext()"
+    },
+    {
+      "label": "HistoryMessage",
+      "file_type": "code",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L208",
+      "id": "agent_route_historymessage",
+      "community": 5,
+      "norm_label": "historymessage"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L210",
+      "id": "agent_route_post",
+      "community": 5,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/links/route.ts",
+      "source_location": "L1",
+      "id": "app_api_links_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/links/route.ts",
+      "source_location": "L6",
+      "id": "links_route_post",
+      "community": 0,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/links/[id]/route.ts",
+      "source_location": "L1",
+      "id": "app_api_links_id_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "DELETE()",
+      "file_type": "code",
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": "L40",
+      "id": "id_route_delete",
+      "community": 0,
+      "norm_label": "delete()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": "L1",
+      "id": "app_api_meetings_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": "L6",
+      "id": "meetings_route_get",
+      "community": 0,
+      "norm_label": "get()"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": "L21",
+      "id": "meetings_route_post",
+      "community": 0,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": "L1",
+      "id": "app_api_meetings_id_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": "L6",
+      "id": "id_route_get",
+      "community": 0,
+      "norm_label": "get()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": "L1",
+      "id": "app_api_meetings_id_approve_tasks_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": "L6",
+      "id": "approve_tasks_route_post",
+      "community": 0,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L1",
+      "id": "app_api_meetings_id_audio_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L6",
+      "id": "audio_route_post",
+      "community": 0,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/projects/route.ts",
+      "source_location": "L1",
+      "id": "app_api_projects_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/projects/route.ts",
+      "source_location": "L6",
+      "id": "projects_route_get",
+      "community": 0,
+      "norm_label": "get()"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/projects/route.ts",
+      "source_location": "L20",
+      "id": "projects_route_post",
+      "community": 0,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": "L1",
+      "id": "app_api_projects_id_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "PATCH()",
+      "file_type": "code",
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": "L13",
+      "id": "id_route_patch",
+      "community": 0,
+      "norm_label": "patch()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": "L1",
+      "id": "app_api_tasks_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "GET()",
+      "file_type": "code",
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": "L6",
+      "id": "tasks_route_get",
+      "community": 0,
+      "norm_label": "get()"
+    },
+    {
+      "label": "POST()",
+      "file_type": "code",
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": "L34",
+      "id": "tasks_route_post",
+      "community": 0,
+      "norm_label": "post()"
+    },
+    {
+      "label": "route.ts",
+      "file_type": "code",
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": "L1",
+      "id": "app_api_tasks_id_route_ts",
+      "community": 0,
+      "norm_label": "route.ts"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L1",
+      "id": "app_projects_page_tsx",
+      "community": 3,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "STATUS_LABELS",
+      "file_type": "code",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L10",
+      "id": "projects_page_status_labels",
+      "community": 3,
+      "norm_label": "status_labels"
+    },
+    {
+      "label": "STATUSES",
+      "file_type": "code",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L17",
+      "id": "projects_page_statuses",
+      "community": 3,
+      "norm_label": "statuses"
+    },
+    {
+      "label": "ProjectsPage()",
+      "file_type": "code",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L19",
+      "id": "projects_page_projectspage",
+      "community": 3,
+      "norm_label": "projectspage()"
+    },
+    {
+      "label": "page.tsx",
+      "file_type": "code",
+      "source_file": "app/projects/[id]/page.tsx",
+      "source_location": "L1",
+      "id": "app_projects_id_page_tsx",
+      "community": 11,
+      "norm_label": "page.tsx"
+    },
+    {
+      "label": "LegacyProjectPage()",
+      "file_type": "code",
+      "source_file": "app/projects/[id]/page.tsx",
+      "source_location": "L3",
+      "id": "id_page_legacyprojectpage",
+      "community": 11,
+      "norm_label": "legacyprojectpage()"
+    },
+    {
+      "label": "BottomNav.tsx",
+      "file_type": "code",
+      "source_file": "components/BottomNav.tsx",
+      "source_location": "L1",
+      "id": "components_bottomnav_tsx",
+      "community": 2,
+      "norm_label": "bottomnav.tsx"
+    },
+    {
+      "label": "tabs",
+      "file_type": "code",
+      "source_file": "components/BottomNav.tsx",
+      "source_location": "L6",
+      "id": "components_bottomnav_tabs",
+      "community": 2,
+      "norm_label": "tabs"
+    },
+    {
+      "label": "BottomNav()",
+      "file_type": "code",
+      "source_file": "components/BottomNav.tsx",
+      "source_location": "L59",
+      "id": "components_bottomnav_bottomnav",
+      "community": 2,
+      "norm_label": "bottomnav()"
+    },
+    {
+      "label": "DateTag.tsx",
+      "file_type": "code",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L1",
+      "id": "components_datetag_tsx",
+      "community": 6,
+      "norm_label": "datetag.tsx"
+    },
+    {
+      "label": "DateTagVariant",
+      "file_type": "code",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L1",
+      "id": "components_datetag_datetagvariant",
+      "community": 6,
+      "norm_label": "datetagvariant"
+    },
+    {
+      "label": "STYLES",
+      "file_type": "code",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L3",
+      "id": "components_datetag_styles",
+      "community": 6,
+      "norm_label": "styles"
+    },
+    {
+      "label": "getVariant()",
+      "file_type": "code",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L9",
+      "id": "components_datetag_getvariant",
+      "community": 6,
+      "norm_label": "getvariant()"
+    },
+    {
+      "label": "formatDate()",
+      "file_type": "code",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L19",
+      "id": "components_datetag_formatdate",
+      "community": 6,
+      "norm_label": "formatdate()"
+    },
+    {
+      "label": "DateTagProps",
+      "file_type": "code",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L31",
+      "id": "components_datetag_datetagprops",
+      "community": 6,
+      "norm_label": "datetagprops"
+    },
+    {
+      "label": "DateTag()",
+      "file_type": "code",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L36",
+      "id": "components_datetag_datetag",
+      "community": 6,
+      "norm_label": "datetag()"
+    },
+    {
+      "label": "PriorityTag.tsx",
+      "file_type": "code",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": "L1",
+      "id": "components_prioritytag_tsx",
+      "community": 3,
+      "norm_label": "prioritytag.tsx"
+    },
+    {
+      "label": "STYLES",
+      "file_type": "code",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": "L3",
+      "id": "components_prioritytag_styles",
+      "community": 3,
+      "norm_label": "styles"
+    },
+    {
+      "label": "PriorityTagProps",
+      "file_type": "code",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": "L9",
+      "id": "components_prioritytag_prioritytagprops",
+      "community": 3,
+      "norm_label": "prioritytagprops"
+    },
+    {
+      "label": "PriorityTag()",
+      "file_type": "code",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": "L14",
+      "id": "components_prioritytag_prioritytag",
+      "community": 3,
+      "norm_label": "prioritytag()"
+    },
+    {
+      "label": "ProjectChip.tsx",
+      "file_type": "code",
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": "L1",
+      "id": "components_projectchip_tsx",
+      "community": 3,
+      "norm_label": "projectchip.tsx"
+    },
+    {
+      "label": "ProjectChipProps",
+      "file_type": "code",
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": "L5",
+      "id": "components_projectchip_projectchipprops",
+      "community": 3,
+      "norm_label": "projectchipprops"
+    },
+    {
+      "label": "ProjectChip()",
+      "file_type": "code",
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": "L11",
+      "id": "components_projectchip_projectchip",
+      "community": 3,
+      "norm_label": "projectchip()"
+    },
+    {
+      "label": "TaskCard.tsx",
+      "file_type": "code",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": "L1",
+      "id": "components_taskcard_tsx",
+      "community": 3,
+      "norm_label": "taskcard.tsx"
+    },
+    {
+      "label": "TaskCardProps",
+      "file_type": "code",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": "L7",
+      "id": "components_taskcard_taskcardprops",
+      "community": 3,
+      "norm_label": "taskcardprops"
+    },
+    {
+      "label": "TaskCard()",
+      "file_type": "code",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": "L12",
+      "id": "components_taskcard_taskcard",
+      "community": 3,
+      "norm_label": "taskcard()"
+    },
+    {
+      "label": "ThemeToggle.tsx",
+      "file_type": "code",
+      "source_file": "components/ThemeToggle.tsx",
+      "source_location": "L1",
+      "id": "components_themetoggle_tsx",
+      "community": 12,
+      "norm_label": "themetoggle.tsx"
+    },
+    {
+      "label": "ThemeToggle()",
+      "file_type": "code",
+      "source_file": "components/ThemeToggle.tsx",
+      "source_location": "L5",
+      "id": "components_themetoggle_themetoggle",
+      "community": 12,
+      "norm_label": "themetoggle()"
+    },
+    {
+      "label": "TopBar.tsx",
+      "file_type": "code",
+      "source_file": "components/TopBar.tsx",
+      "source_location": "L1",
+      "id": "components_topbar_tsx",
+      "community": 2,
+      "norm_label": "topbar.tsx"
+    },
+    {
+      "label": "TopBarProps",
+      "file_type": "code",
+      "source_file": "components/TopBar.tsx",
+      "source_location": "L3",
+      "id": "components_topbar_topbarprops",
+      "community": 2,
+      "norm_label": "topbarprops"
+    },
+    {
+      "label": "TopBar()",
+      "file_type": "code",
+      "source_file": "components/TopBar.tsx",
+      "source_location": "L8",
+      "id": "components_topbar_topbar",
+      "community": 2,
+      "norm_label": "topbar()"
+    },
+    {
+      "label": "db.ts",
+      "file_type": "code",
+      "source_file": "lib/db.ts",
+      "source_location": "L1",
+      "id": "lib_db_ts",
+      "community": 0,
+      "norm_label": "db.ts"
+    },
+    {
+      "label": "sql",
+      "file_type": "code",
+      "source_file": "lib/db.ts",
+      "source_location": "L3",
+      "id": "lib_db_sql",
+      "community": 0,
+      "norm_label": "sql"
+    },
+    {
+      "label": "types.ts",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L1",
+      "id": "lib_types_ts",
+      "community": 3,
+      "norm_label": "types.ts"
+    },
+    {
+      "label": "Status",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L1",
+      "id": "lib_types_status",
+      "community": 3,
+      "norm_label": "status"
+    },
+    {
+      "label": "Priority",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L2",
+      "id": "lib_types_priority",
+      "community": 3,
+      "norm_label": "priority"
+    },
+    {
+      "label": "LinkType",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L3",
+      "id": "lib_types_linktype",
+      "community": 3,
+      "norm_label": "linktype"
+    },
+    {
+      "label": "Project",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L5",
+      "id": "lib_types_project",
+      "community": 3,
+      "norm_label": "project"
+    },
+    {
+      "label": "Task",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L14",
+      "id": "lib_types_task",
+      "community": 3,
+      "norm_label": "task"
+    },
+    {
+      "label": "Link",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L26",
+      "id": "lib_types_link",
+      "community": 3,
+      "norm_label": "link"
+    },
+    {
+      "label": "ActivityEntry",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L34",
+      "id": "lib_types_activityentry",
+      "community": 3,
+      "norm_label": "activityentry"
+    },
+    {
+      "label": "AgentResponse",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L43",
+      "id": "lib_types_agentresponse",
+      "community": 5,
+      "norm_label": "agentresponse"
+    },
+    {
+      "label": "ChatMessage",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "L49",
+      "id": "lib_types_chatmessage",
+      "community": 2,
+      "norm_label": "chatmessage"
+    },
+    {
+      "label": "init-db.ts",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": "L1",
+      "id": "scripts_init_db_ts",
+      "community": 0,
+      "norm_label": "init-db.ts"
+    },
+    {
+      "label": "main()",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": "L4",
+      "id": "scripts_init_db_main",
+      "community": 0,
+      "norm_label": "main()"
+    },
+    {
+      "label": "CORS Middleware",
+      "file_type": "code",
+      "source_file": "middleware.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "middleware",
+      "community": 1,
+      "norm_label": "cors middleware"
+    },
+    {
+      "label": "Root Layout",
+      "file_type": "code",
+      "source_file": "app/layout.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "root_layout",
+      "community": 16,
+      "norm_label": "root layout"
+    },
+    {
+      "label": "Chat Page",
+      "file_type": "code",
+      "source_file": "app/page.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "chat_page",
+      "community": 4,
+      "norm_label": "chat page"
+    },
+    {
+      "label": "Activity Page",
+      "file_type": "code",
+      "source_file": "app/activity/page.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "activity_page",
+      "community": 4,
+      "norm_label": "activity page"
+    },
+    {
+      "label": "API: GET /activity",
+      "file_type": "code",
+      "source_file": "app/api/activity/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_activity_route",
+      "community": 1,
+      "norm_label": "api: get /activity"
+    },
+    {
+      "label": "API: POST /agent (SSE)",
+      "file_type": "code",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_agent_route",
+      "community": 1,
+      "norm_label": "api: post /agent (sse)"
+    },
+    {
+      "label": "API: POST /links",
+      "file_type": "code",
+      "source_file": "app/api/links/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_links_route",
+      "community": 1,
+      "norm_label": "api: post /links"
+    },
+    {
+      "label": "API: DELETE /links/[id]",
+      "file_type": "code",
+      "source_file": "app/api/links/[id]/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_links_id_route",
+      "community": 1,
+      "norm_label": "api: delete /links/[id]"
+    },
+    {
+      "label": "API: GET+POST /meetings",
+      "file_type": "code",
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_meetings_route",
+      "community": 1,
+      "norm_label": "api: get+post /meetings"
+    },
+    {
+      "label": "API: GET+DELETE /meetings/[id]",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_meetings_id_route",
+      "community": 1,
+      "norm_label": "api: get+delete /meetings/[id]"
+    },
+    {
+      "label": "API: POST /meetings/[id]/approve-tasks",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_meetings_approve_tasks_route",
+      "community": 1,
+      "norm_label": "api: post /meetings/[id]/approve-tasks"
+    },
+    {
+      "label": "API: POST /meetings/[id]/audio",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_meetings_audio_route",
+      "community": 1,
+      "norm_label": "api: post /meetings/[id]/audio"
+    },
+    {
+      "label": "lib/db.ts (sql client)",
+      "file_type": "code",
+      "source_file": "lib/db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "lib_db",
+      "community": 1,
+      "norm_label": "lib/db.ts (sql client)"
+    },
+    {
+      "label": "lib/types.ts",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "lib_types",
+      "community": 4,
+      "norm_label": "lib/types.ts"
+    },
+    {
+      "label": "TopBar Component",
+      "file_type": "code",
+      "source_file": "components/TopBar.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "component_topbar",
+      "community": 4,
+      "norm_label": "topbar component"
+    },
+    {
+      "label": "BottomNav Component",
+      "file_type": "code",
+      "source_file": "components/BottomNav.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "component_bottomnav",
+      "community": 4,
+      "norm_label": "bottomnav component"
+    },
+    {
+      "label": "DB: tasks",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_table_tasks",
+      "community": 1,
+      "norm_label": "db: tasks"
+    },
+    {
+      "label": "DB: projects",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_table_projects",
+      "community": 1,
+      "norm_label": "db: projects"
+    },
+    {
+      "label": "DB: links",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_table_links",
+      "community": 1,
+      "norm_label": "db: links"
+    },
+    {
+      "label": "DB: activity_log",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_table_activity_log",
+      "community": 1,
+      "norm_label": "db: activity_log"
+    },
+    {
+      "label": "DB: agent_log",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_table_agent_log",
+      "community": 1,
+      "norm_label": "db: agent_log"
+    },
+    {
+      "label": "DB: meetings",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_table_meetings",
+      "community": 1,
+      "norm_label": "db: meetings"
+    },
+    {
+      "label": "DB: meeting_attendees",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_table_meeting_attendees",
+      "community": 1,
+      "norm_label": "db: meeting_attendees"
+    },
+    {
+      "label": "DB: suggested_tasks",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "db_table_suggested_tasks",
+      "community": 1,
+      "norm_label": "db: suggested_tasks"
+    },
+    {
+      "label": "Anthropic Claude API",
+      "file_type": "concept",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "anthropic_claude_api",
+      "community": 1,
+      "norm_label": "anthropic claude api"
+    },
+    {
+      "label": "Supabase Storage",
+      "file_type": "concept",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "supabase_storage",
+      "community": 1,
+      "norm_label": "supabase storage"
+    },
+    {
+      "label": "Type: ChatMessage",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_chat_message",
+      "community": 4,
+      "norm_label": "type: chatmessage"
+    },
+    {
+      "label": "Type: AgentResponse",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_agent_response",
+      "community": 1,
+      "norm_label": "type: agentresponse"
+    },
+    {
+      "label": "API: GET+POST /projects",
+      "file_type": "code",
+      "source_file": "app/api/projects/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_projects_route",
+      "community": 1,
+      "norm_label": "api: get+post /projects"
+    },
+    {
+      "label": "API: GET+PATCH+DELETE /projects/[id]",
+      "file_type": "code",
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_projects_id_route",
+      "community": 1,
+      "norm_label": "api: get+patch+delete /projects/[id]"
+    },
+    {
+      "label": "API: GET+POST /tasks",
+      "file_type": "code",
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_tasks_route",
+      "community": 1,
+      "norm_label": "api: get+post /tasks"
+    },
+    {
+      "label": "API: GET+PATCH+DELETE /tasks/[id]",
+      "file_type": "code",
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "api_tasks_id_route",
+      "community": 1,
+      "norm_label": "api: get+patch+delete /tasks/[id]"
+    },
+    {
+      "label": "Projects Page (web)",
+      "file_type": "code",
+      "source_file": "app/projects/page.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "page_projects",
+      "community": 4,
+      "norm_label": "projects page (web)"
+    },
+    {
+      "label": "DateTag Component",
+      "file_type": "code",
+      "source_file": "components/DateTag.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "component_date_tag",
+      "community": 4,
+      "norm_label": "datetag component"
+    },
+    {
+      "label": "PriorityTag Component",
+      "file_type": "code",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "component_priority_tag",
+      "community": 4,
+      "norm_label": "prioritytag component"
+    },
+    {
+      "label": "ProjectChip Component",
+      "file_type": "code",
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "component_project_chip",
+      "community": 4,
+      "norm_label": "projectchip component"
+    },
+    {
+      "label": "TaskCard Component",
+      "file_type": "code",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "component_task_card",
+      "community": 4,
+      "norm_label": "taskcard component"
+    },
+    {
+      "label": "Init DB Script",
+      "file_type": "code",
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "scripts_init_db",
+      "community": 1,
+      "norm_label": "init db script"
+    },
+    {
+      "label": "Type: Project",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "line 5",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_project",
+      "community": 4,
+      "norm_label": "type: project"
+    },
+    {
+      "label": "Type: Task",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "line 14",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_task",
+      "community": 4,
+      "norm_label": "type: task"
+    },
+    {
+      "label": "Type: Link",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "line 25",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_link",
+      "community": 1,
+      "norm_label": "type: link"
+    },
+    {
+      "label": "Type: Status",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "line 1",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_status",
+      "community": 4,
+      "norm_label": "type: status"
+    },
+    {
+      "label": "Type: Priority",
+      "file_type": "code",
+      "source_file": "lib/types.ts",
+      "source_location": "line 2",
+      "source_url": null,
+      "captured_at": null,
+      "author": null,
+      "contributor": null,
+      "id": "type_priority",
+      "community": 4,
+      "norm_label": "type: priority"
+    }
+  ],
+  "links": [
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "middleware.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "middleware_ts",
+      "target": "pm_app_middleware_middleware",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "middleware.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "middleware_ts",
+      "target": "pm_app_middleware_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "next.config.mjs",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "next_config_mjs",
+      "target": "pm_app_next_config_nextconfig",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "tailwind.config.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "tailwind_config_ts",
+      "target": "pm_app_tailwind_config_config",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_layout_tsx",
+      "target": "app_layout_archivo",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "app_layout_tsx",
+      "target": "app_layout_metadata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "app_layout_tsx",
+      "target": "app_layout_viewport",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/layout.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "app_layout_tsx",
+      "target": "app_layout_rootlayout",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_page_tsx",
+      "target": "components_topbar_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_page_tsx",
+      "target": "components_bottomnav_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_page_tsx",
+      "target": "lib_types_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_page_tsx",
+      "target": "lib_types_chatmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_page_tsx",
+      "target": "app_page_actioncolor",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "app_page_tsx",
+      "target": "app_page_action_colors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "app_page_tsx",
+      "target": "app_page_action_colors_dark",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "app_page_tsx",
+      "target": "app_page_chatpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "components_topbar_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "components_bottomnav_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "activity_page_activitydata",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "activity_page_dot_colors",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "activity_page_action_labels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "activity_page_tag_styles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "activity_page_formattime",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L63",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "activity_page_sectionlabel",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L74",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "activity_page_donut",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L124",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "activity_page_progressbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/activity/page.tsx",
+      "source_location": "L137",
+      "weight": 1.0,
+      "source": "app_activity_page_tsx",
+      "target": "activity_page_activitypage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/activity/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_activity_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/activity/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_activity_route_ts",
+      "target": "activity_route_calcstreak",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/activity/route.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "app_api_activity_route_ts",
+      "target": "activity_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/activity/route.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "activity_route_get",
+      "target": "activity_route_calcstreak",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/activity/route.ts",
+      "source_location": "L105",
+      "weight": 1.0,
+      "source": "activity_route_get",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_agent_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_api_agent_route_ts",
+      "target": "lib_types_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_api_agent_route_ts",
+      "target": "lib_types_agentresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_api_agent_route_ts",
+      "target": "agent_route_client",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "app_api_agent_route_ts",
+      "target": "agent_route_executeaction",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L193",
+      "weight": 1.0,
+      "source": "app_api_agent_route_ts",
+      "target": "agent_route_buildcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L208",
+      "weight": 1.0,
+      "source": "app_api_agent_route_ts",
+      "target": "agent_route_historymessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L210",
+      "weight": 1.0,
+      "source": "app_api_agent_route_ts",
+      "target": "agent_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L32",
+      "weight": 1.0,
+      "source": "agent_route_executeaction",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/agent/route.ts",
+      "source_location": "L217",
+      "weight": 1.0,
+      "source": "agent_route_post",
+      "target": "agent_route_buildcontext",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/links/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_links_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/links/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_links_route_ts",
+      "target": "links_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/links/route.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "links_route_post",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/links/[id]/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_links_id_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/links/[id]/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_links_id_route_ts",
+      "target": "id_route_delete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_route_ts",
+      "target": "id_route_delete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": "L35",
+      "weight": 1.0,
+      "source": "app_api_projects_id_route_ts",
+      "target": "id_route_delete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": "L40",
+      "weight": 1.0,
+      "source": "app_api_tasks_id_route_ts",
+      "target": "id_route_delete",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/links/[id]/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "id_route_delete",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_meetings_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_meetings_route_ts",
+      "target": "meetings_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "app_api_meetings_route_ts",
+      "target": "meetings_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "meetings_route_get",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "meetings_route_post",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_route_ts",
+      "target": "id_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_projects_id_route_ts",
+      "target": "id_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_tasks_id_route_ts",
+      "target": "id_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "id_route_get",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_approve_tasks_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_approve_tasks_route_ts",
+      "target": "approve_tasks_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": "L15",
+      "weight": 1.0,
+      "source": "approve_tasks_route_post",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_audio_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_audio_route_ts",
+      "target": "audio_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L62",
+      "weight": 1.0,
+      "source": "audio_route_post",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/projects/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_projects_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/projects/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_projects_route_ts",
+      "target": "projects_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/projects/route.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "app_api_projects_route_ts",
+      "target": "projects_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/route.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "projects_route_get",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/route.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "projects_route_post",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_projects_id_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "app_api_projects_id_route_ts",
+      "target": "id_route_patch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": "L13",
+      "weight": 1.0,
+      "source": "app_api_tasks_id_route_ts",
+      "target": "id_route_patch",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "id_route_patch",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_tasks_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_api_tasks_route_ts",
+      "target": "tasks_route_get",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "app_api_tasks_route_ts",
+      "target": "tasks_route_post",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": "L42",
+      "weight": 1.0,
+      "source": "tasks_route_post",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_api_tasks_id_route_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "components_topbar_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "components_bottomnav_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "components_projectchip_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "components_taskcard_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "lib_types_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "lib_types_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "lib_types_task",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "lib_types_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L10",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "projects_page_status_labels",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "projects_page_statuses",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/page.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "app_projects_page_tsx",
+      "target": "projects_page_projectspage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/projects/[id]/page.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "app_projects_id_page_tsx",
+      "target": "id_page_legacyprojectpage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/BottomNav.tsx",
+      "source_location": "L6",
+      "weight": 1.0,
+      "source": "components_bottomnav_tsx",
+      "target": "components_bottomnav_tabs",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/BottomNav.tsx",
+      "source_location": "L59",
+      "weight": 1.0,
+      "source": "components_bottomnav_tsx",
+      "target": "components_bottomnav_bottomnav",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "components_datetag_tsx",
+      "target": "components_datetag_datetagvariant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_datetag_tsx",
+      "target": "components_datetag_styles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_datetag_tsx",
+      "target": "components_datetag_getvariant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "components_datetag_tsx",
+      "target": "components_datetag_formatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "components_datetag_tsx",
+      "target": "components_datetag_datetagprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "components_datetag_tsx",
+      "target": "components_datetag_datetag",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "components_taskcard_tsx",
+      "target": "components_datetag_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L37",
+      "weight": 1.0,
+      "source": "components_datetag_datetag",
+      "target": "components_datetag_getvariant",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "components/DateTag.tsx",
+      "source_location": "L51",
+      "weight": 1.0,
+      "source": "components_datetag_datetag",
+      "target": "components_datetag_formatdate",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "components_prioritytag_tsx",
+      "target": "lib_types_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "components_prioritytag_tsx",
+      "target": "lib_types_priority",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_prioritytag_tsx",
+      "target": "components_prioritytag_styles",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "components_prioritytag_tsx",
+      "target": "components_prioritytag_prioritytagprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "components_prioritytag_tsx",
+      "target": "components_prioritytag_prioritytag",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "components_taskcard_tsx",
+      "target": "components_prioritytag_tsx",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_projectchip_tsx",
+      "target": "lib_types_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_projectchip_tsx",
+      "target": "lib_types_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "components_projectchip_tsx",
+      "target": "components_projectchip_projectchipprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": "L11",
+      "weight": 1.0,
+      "source": "components_projectchip_tsx",
+      "target": "components_projectchip_projectchip",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_taskcard_tsx",
+      "target": "lib_types_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_taskcard_tsx",
+      "target": "lib_types_task",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "components_taskcard_tsx",
+      "target": "components_taskcard_taskcardprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TaskCard.tsx",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "components_taskcard_tsx",
+      "target": "components_taskcard_taskcard",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/ThemeToggle.tsx",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "components_themetoggle_tsx",
+      "target": "components_themetoggle_themetoggle",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TopBar.tsx",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "components_topbar_tsx",
+      "target": "components_topbar_topbarprops",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "components/TopBar.tsx",
+      "source_location": "L8",
+      "weight": 1.0,
+      "source": "components_topbar_tsx",
+      "target": "components_topbar_topbar",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/db.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "lib_db_ts",
+      "target": "lib_db_sql",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/init-db.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "scripts_init_db_ts",
+      "target": "lib_db_ts",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "scripts_init_db_main",
+      "target": "lib_db_sql"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/types.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "lib_types_ts",
+      "target": "lib_types_status",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/types.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "lib_types_ts",
+      "target": "lib_types_priority",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/types.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "lib_types_ts",
+      "target": "lib_types_linktype",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/types.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "lib_types_ts",
+      "target": "lib_types_project",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/types.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "lib_types_ts",
+      "target": "lib_types_task",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/types.ts",
+      "source_location": "L26",
+      "weight": 1.0,
+      "source": "lib_types_ts",
+      "target": "lib_types_link",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/types.ts",
+      "source_location": "L34",
+      "weight": 1.0,
+      "source": "lib_types_ts",
+      "target": "lib_types_activityentry",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/types.ts",
+      "source_location": "L43",
+      "weight": 1.0,
+      "source": "lib_types_ts",
+      "target": "lib_types_agentresponse",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "lib/types.ts",
+      "source_location": "L49",
+      "weight": 1.0,
+      "source": "lib_types_ts",
+      "target": "lib_types_chatmessage",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "scripts/init-db.ts",
+      "source_location": "L4",
+      "weight": 1.0,
+      "source": "scripts_init_db_ts",
+      "target": "scripts_init_db_main",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "middleware.ts",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "middleware",
+      "target": "api_activity_route"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "middleware.ts",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "middleware",
+      "target": "api_agent_route"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "middleware.ts",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "middleware",
+      "target": "api_links_route"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "middleware.ts",
+      "source_location": null,
+      "weight": 0.7,
+      "source": "middleware",
+      "target": "api_meetings_route"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "chat_page",
+      "target": "component_topbar"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "chat_page",
+      "target": "component_bottomnav"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "chat_page",
+      "target": "type_chat_message"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "chat_page",
+      "target": "api_agent_route"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/activity/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "activity_page",
+      "target": "component_topbar"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/activity/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "activity_page",
+      "target": "component_bottomnav"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/activity/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "activity_page",
+      "target": "api_activity_route"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/activity/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_activity_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/activity/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_activity_route",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/activity/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_activity_route",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/activity/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_activity_route",
+      "target": "db_table_agent_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_agent_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_agent_route",
+      "target": "lib_types"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_agent_route",
+      "target": "type_agent_response"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_agent_route",
+      "target": "anthropic_claude_api"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_agent_route",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_agent_route",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_agent_route",
+      "target": "db_table_links"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_agent_route",
+      "target": "db_table_activity_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/agent/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_agent_route",
+      "target": "db_table_agent_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/links/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_links_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/links/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_links_route",
+      "target": "db_table_links"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/links/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_links_route",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/links/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_links_route",
+      "target": "db_table_activity_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/links/[id]/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_links_id_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/links/[id]/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_links_id_route",
+      "target": "db_table_links"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_route",
+      "target": "db_table_meetings"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_route",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_route",
+      "target": "db_table_meeting_attendees"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_id_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_id_route",
+      "target": "db_table_meetings"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_id_route",
+      "target": "db_table_meeting_attendees"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_id_route",
+      "target": "db_table_suggested_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_id_route",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_approve_tasks_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_approve_tasks_route",
+      "target": "db_table_suggested_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_approve_tasks_route",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/approve-tasks/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_approve_tasks_route",
+      "target": "db_table_activity_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_audio_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_audio_route",
+      "target": "anthropic_claude_api"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_audio_route",
+      "target": "supabase_storage"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_audio_route",
+      "target": "db_table_meetings"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_audio_route",
+      "target": "db_table_suggested_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_meetings_audio_route",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/route.ts",
+      "source_location": "line 4",
+      "weight": 1.0,
+      "source": "api_projects_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": "line 4",
+      "weight": 1.0,
+      "source": "api_projects_id_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": "line 4",
+      "weight": 1.0,
+      "source": "api_tasks_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": "line 4",
+      "weight": 1.0,
+      "source": "api_tasks_id_route",
+      "target": "lib_db"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": "line 2",
+      "weight": 1.0,
+      "source": "scripts_init_db",
+      "target": "lib_db"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/projects/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_projects",
+      "target": "lib_types"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "component_priority_tag",
+      "target": "lib_types"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "component_project_chip",
+      "target": "lib_types"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/TaskCard.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "component_task_card",
+      "target": "lib_types"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/projects/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_projects",
+      "target": "component_topbar"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/projects/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_projects",
+      "target": "component_bottomnav"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "db_table_suggested_tasks",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "db_table_tasks",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "db_table_links",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/route.ts",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "api_projects_route",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "api_projects_id_route",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_tasks_route",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_tasks_id_route",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "lib/types.ts",
+      "source_location": null,
+      "weight": 0.95,
+      "source": "type_task",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scripts_init_db",
+      "target": "db_table_tasks"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_projects_route",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "api_projects_id_route",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "lib/types.ts",
+      "source_location": null,
+      "weight": 0.95,
+      "source": "type_project",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scripts_init_db",
+      "target": "db_table_projects"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/[id]/route.ts",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "api_projects_id_route",
+      "target": "db_table_links"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "api_tasks_route",
+      "target": "db_table_links"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "api_tasks_id_route",
+      "target": "db_table_links"
+    },
+    {
+      "relation": "shares_data_with",
+      "confidence": "INFERRED",
+      "confidence_score": 0.95,
+      "source_file": "lib/types.ts",
+      "source_location": null,
+      "weight": 0.95,
+      "source": "type_link",
+      "target": "db_table_links"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scripts_init_db",
+      "target": "db_table_links"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/projects/route.ts",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "api_projects_route",
+      "target": "db_table_activity_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/tasks/route.ts",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "api_tasks_route",
+      "target": "db_table_activity_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/tasks/[id]/route.ts",
+      "source_location": null,
+      "weight": 0.9,
+      "source": "api_tasks_id_route",
+      "target": "db_table_activity_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scripts_init_db",
+      "target": "db_table_activity_log"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scripts_init_db",
+      "target": "db_table_agent_log"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "db_table_suggested_tasks",
+      "target": "db_table_meetings"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "scripts_init_db",
+      "target": "db_table_meetings"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/projects/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_projects",
+      "target": "api_projects_route"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/projects/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_projects",
+      "target": "api_tasks_route"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/projects/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_projects",
+      "target": "component_project_chip"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/projects/page.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "page_projects",
+      "target": "component_task_card"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/TaskCard.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "component_task_card",
+      "target": "component_date_tag"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/PriorityTag.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "component_priority_tag",
+      "target": "type_priority"
+    },
+    {
+      "relation": "calls",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/TaskCard.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "component_task_card",
+      "target": "component_priority_tag"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/ProjectChip.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "component_project_chip",
+      "target": "type_project"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/TaskCard.tsx",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "component_task_card",
+      "target": "type_task"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/types.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "type_task",
+      "target": "type_status"
+    },
+    {
+      "relation": "references",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/types.ts",
+      "source_location": null,
+      "weight": 1.0,
+      "source": "type_task",
+      "target": "type_priority"
+    }
+  ],
+  "hyperedges": [
+    {
+      "id": "all_routes_sql",
+      "label": "All API Routes Use SQL Client",
+      "nodes": [
+        "api_activity_route",
+        "api_agent_route",
+        "api_links_route",
+        "api_links_id_route",
+        "api_meetings_route",
+        "api_meetings_id_route",
+        "api_meetings_approve_tasks_route",
+        "api_meetings_audio_route",
+        "lib_db"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/db.ts"
+    },
+    {
+      "id": "cors_coverage",
+      "label": "Middleware Covers All API Routes",
+      "nodes": [
+        "middleware",
+        "api_activity_route",
+        "api_agent_route",
+        "api_links_route",
+        "api_meetings_route"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "middleware.ts"
+    },
+    {
+      "id": "meetings_pipeline",
+      "label": "Meetings Audio Pipeline",
+      "nodes": [
+        "api_meetings_audio_route",
+        "anthropic_claude_api",
+        "db_table_suggested_tasks",
+        "api_meetings_approve_tasks_route",
+        "db_table_tasks"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/api/meetings/[id]/audio/route.ts"
+    },
+    {
+      "id": "chat_pipeline",
+      "label": "Chat SSE Agent Pipeline",
+      "nodes": [
+        "chat_page",
+        "api_agent_route",
+        "anthropic_claude_api",
+        "db_table_tasks",
+        "db_table_projects"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.tsx"
+    },
+    {
+      "id": "db_schema_cascade",
+      "label": "DB FK Cascade: projects->tasks->links",
+      "nodes": [
+        "db_table_projects",
+        "db_table_tasks",
+        "db_table_links",
+        "db_table_suggested_tasks"
+      ],
+      "relation": "participate_in",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "scripts/init-db.ts"
+    },
+    {
+      "id": "types_consumed",
+      "label": "lib/types consumed by components and pages",
+      "nodes": [
+        "lib_types",
+        "type_project",
+        "type_task",
+        "type_priority",
+        "type_status",
+        "page_projects",
+        "component_project_chip",
+        "component_task_card",
+        "component_priority_tag"
+      ],
+      "relation": "implement",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/types.ts"
+    }
+  ],
+  "built_at_commit": "96f9b99a4dddac394017d9d10e8de7b27f745932"
+}

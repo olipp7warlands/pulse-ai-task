@@ -1,0 +1,224 @@
+{
+  "communities": {
+    "0": [
+      "activity_page_action_labels",
+      "activity_page_activitydata",
+      "activity_page_activitypage",
+      "activity_page_donut",
+      "activity_page_dot_colors",
+      "activity_page_formattime",
+      "activity_page_progressbar",
+      "activity_page_sectionlabel",
+      "activity_page_tag_styles",
+      "app_page_actioncolor",
+      "app_page_chatpage",
+      "app_page_tsx",
+      "id_page_legacyprojectpage",
+      "projects_page_projectspage",
+      "projects_page_status_labels",
+      "projects_page_statuses"
+    ],
+    "1": [
+      "activity_route_calcstreak",
+      "agent_route_buildcontext",
+      "agent_route_client",
+      "agent_route_executeaction",
+      "agent_route_historymessage",
+      "agent_route_post",
+      "app_api_agent_route_ts",
+      "id_route_delete",
+      "id_route_get",
+      "id_route_patch",
+      "lib_db_sql",
+      "lib_db_ts",
+      "lib_types_agentresponse",
+      "scripts_init_db_main",
+      "scripts_init_db_ts"
+    ],
+    "2": [
+      "components_datetag_datetag",
+      "components_datetag_datetagprops",
+      "components_datetag_datetagvariant",
+      "components_datetag_formatdate",
+      "components_datetag_getvariant",
+      "components_datetag_styles",
+      "components_datetag_tsx",
+      "components_prioritytag_prioritytag",
+      "components_prioritytag_tsx",
+      "components_taskcard_taskcardprops",
+      "components_taskcard_tsx",
+      "lib_types_priority",
+      "lib_types_task"
+    ],
+    "3": [
+      "components_projectchip_tsx",
+      "lib_types_activityentry",
+      "lib_types_chatmessage",
+      "lib_types_link",
+      "lib_types_linktype",
+      "lib_types_project",
+      "lib_types_status",
+      "lib_types_ts"
+    ],
+    "4": [
+      "app_layout_archivo",
+      "app_layout_metadata",
+      "app_layout_rootlayout",
+      "app_layout_tsx",
+      "app_layout_viewport"
+    ],
+    "5": [
+      "middleware_ts",
+      "pm_app_middleware_config",
+      "tailwind_config_ts"
+    ],
+    "6": [
+      "components_topbar_topbar",
+      "components_topbar_topbarprops",
+      "components_topbar_tsx"
+    ],
+    "7": [
+      "components_bottomnav_tabs",
+      "components_bottomnav_tsx"
+    ],
+    "8": [
+      "next_env_d_ts"
+    ],
+    "9": [
+      "next_config_mjs"
+    ],
+    "10": [
+      "postcss_config_js"
+    ],
+    "11": [
+      "components_themetoggle_tsx"
+    ]
+  },
+  "cohesion": {
+    "0": 0.12,
+    "1": 0.21,
+    "2": 0.19,
+    "3": 0.29,
+    "4": 0.4,
+    "5": 0.67,
+    "6": 0.67,
+    "7": 1.0,
+    "8": 1.0,
+    "9": 1.0,
+    "10": 1.0,
+    "11": 1.0
+  },
+  "gods": [
+    {
+      "id": "lib_db_sql",
+      "label": "sql",
+      "degree": 7
+    },
+    {
+      "id": "agent_route_post",
+      "label": "POST()",
+      "degree": 3
+    },
+    {
+      "id": "id_route_get",
+      "label": "GET()",
+      "degree": 3
+    },
+    {
+      "id": "components_datetag_datetag",
+      "label": "DateTag()",
+      "degree": 3
+    },
+    {
+      "id": "lib_types_project",
+      "label": "Project",
+      "degree": 3
+    },
+    {
+      "id": "lib_types_task",
+      "label": "Task",
+      "degree": 3
+    },
+    {
+      "id": "pm_app_middleware_config",
+      "label": "config",
+      "degree": 2
+    },
+    {
+      "id": "activity_route_calcstreak",
+      "label": "calcStreak()",
+      "degree": 2
+    },
+    {
+      "id": "agent_route_executeaction",
+      "label": "executeAction()",
+      "degree": 2
+    },
+    {
+      "id": "agent_route_buildcontext",
+      "label": "buildContext()",
+      "degree": 2
+    }
+  ],
+  "surprises": [
+    {
+      "source": "executeAction()",
+      "target": "sql",
+      "source_files": [
+        "app/api/agent/route.ts",
+        "lib/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `executeAction()` unexpectedly reaches hub `sql`"
+    },
+    {
+      "source": "DELETE()",
+      "target": "sql",
+      "source_files": [
+        "app/api/links/[id]/route.ts",
+        "lib/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `DELETE()` unexpectedly reaches hub `sql`"
+    },
+    {
+      "source": "PATCH()",
+      "target": "sql",
+      "source_files": [
+        "app/api/projects/[id]/route.ts",
+        "lib/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `PATCH()` unexpectedly reaches hub `sql`"
+    },
+    {
+      "source": "sql",
+      "target": "main()",
+      "source_files": [
+        "lib/db.ts",
+        "scripts/init-db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `main()` unexpectedly reaches hub `sql`"
+    },
+    {
+      "source": "POST()",
+      "target": "sql",
+      "source_files": [
+        "app/api/agent/route.ts",
+        "lib/db.ts"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}
