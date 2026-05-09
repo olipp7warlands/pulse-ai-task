@@ -5,3 +5,8 @@ data/
 *.sqlite
 *.sqlite-shm
 *.sqlite-wal
+
+# Graphify cache (regenerated automatically)
+graphify-out/cache/
+graphify-out/manifest.json
+graphify-out/.graphify_root
