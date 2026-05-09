@@ -17,7 +17,21 @@ export async function POST(req: Request, { params }: { params: { id: string } })
   }
 
   const base64 = buffer.toString('base64')
-  const mediaType = file.type || 'audio/mp4'
+
+  // Map MIME types to Claude-accepted values
+  const mimeMap: Record<string, string> = {
+    'audio/m4a': 'audio/mp4',
+    'audio/x-m4a': 'audio/mp4',
+    'audio/mp4': 'audio/mp4',
+    'audio/mpeg': 'audio/mpeg',
+    'audio/mp3': 'audio/mpeg',
+    'audio/wav': 'audio/wav',
+    'audio/x-wav': 'audio/wav',
+    'audio/ogg': 'audio/ogg',
+    'audio/flac': 'audio/flac',
+  }
+  const rawMime = (file.type || '').toLowerCase()
+  const mediaType = mimeMap[rawMime] ?? 'audio/mp4'
 
   // Analyze with Claude
   const claudeRes = await fetch('https://api.anthropic.com/v1/messages', {

@@ -21,7 +21,9 @@ Acciones disponibles:
 - summarize_links: params: {task_id?, task_title?, project_id?, project_name?}
 - query_tasks: params: {status?, priority?, overdue?, project_id?, project_name?}
 
-Si no hay acción clara usa action: null. Responde en español. Sé conciso.`
+Si no hay acción clara usa action: null. Responde en español. Sé conciso.
+
+REGLA IMPORTANTE — proyectos duplicados: Si el usuario pide crear un proyecto cuyo nombre ya existe en el contexto, créalo igualmente con sufijo numérico automático (ej: "bifutbol" existe → crear "bifutbol 2"). Usa create_project con el nombre ajustado y avisa al usuario en el mensaje. NUNCA bloquees la creación. Si "bifutbol 2" también existe, prueba "bifutbol 3", etc.`
 
 async function executeAction(
   action: string,
