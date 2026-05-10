@@ -70,8 +70,13 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     // Cleanup temp file
     await fs.unlink(tmpPath).catch(() => {})
 
-    // STEP 2 — Analyze with Claude
-    console.log('[claude] analyzing transcript...')
+    // STEP 2 — Analyze with Claude (include projects for context)
+    const projects = await sql<{ id: number; name: string }[]>`SELECT id, name FROM projects ORDER BY name`
+    const projectsCtx = projects.length > 0
+      ? projects.map(p => `- ${p.id}: ${p.name}`).join('\n')
+      : '(sin proyectos creados todavía)'
+
+    console.log('[claude] analyzing transcript with', projects.length, 'projects...')
     const claudeRes = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: {
@@ -84,7 +89,7 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
         max_tokens: 2000,
         messages: [{
           role: 'user',
-          content: `Analiza esta transcripción de reunión y devuelve JSON exacto sin texto adicional con este formato:\n\n{ "summary": "resumen 2-3 frases máximo 60 palabras", "suggested_tasks": [{ "title": "tarea concreta accionable", "priority": "high|medium|low" }] }\n\nMáximo 5 tareas sugeridas. Responde solo el JSON, nada más.\n\nTranscripción:\n${transcript}`,
+          content: `Analiza esta transcripción de reunión y devuelve JSON exacto sin texto adicional:\n\n{\n  "summary": "resumen 2-3 frases máximo 60 palabras",\n  "suggested_tasks": [{\n    "title": "tarea concreta accionable",\n    "priority": "high|medium|low",\n    "project_id": <id de proyecto existente o null>,\n    "new_project_suggestion": "nombre de nuevo proyecto o null"\n  }]\n}\n\nMáximo 5 tareas. Si la tarea encaja con un proyecto existente, usa su project_id. Si no encaja con ninguno, pon project_id null y rellena new_project_suggestion. Responde solo el JSON.\n\nProyectos existentes:\n${projectsCtx}\n\nTranscripción:\n${transcript}`,
         }],
       }),
     })
@@ -100,7 +105,10 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     }
 
     const rawText = claudeData.content?.[0]?.text ?? ''
-    let analysis: { summary: string; suggested_tasks: { title: string; priority: string }[] }
+    let analysis: {
+      summary: string
+      suggested_tasks: { title: string; priority: string; project_id?: number | null; new_project_suggestion?: string | null }[]
+    }
     try {
       const cleaned = rawText.replace(/```json|```/g, '').trim()
       analysis = JSON.parse(cleaned)
@@ -109,7 +117,10 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
       return Response.json({ error: 'parse_failed', raw: rawText }, { status: 500 })
     }
 
-    // STEP 3 — Save to DB
+    // STEP 3 — Ensure new columns exist (idempotent migration)
+    await sql`ALTER TABLE suggested_tasks ADD COLUMN IF NOT EXISTS new_project_suggestion TEXT`
+
+    // Save transcript + summary
     await sql`
       UPDATE meetings
       SET transcript = ${transcript}, summary = ${analysis.summary}, audio_url = ${audioUrl}
@@ -120,9 +131,11 @@ export async function POST(req: NextRequest, { params }: { params: { id: string 
     await sql`DELETE FROM suggested_tasks WHERE meeting_id = ${meetingId}`
     const tasks = Array.isArray(analysis.suggested_tasks) ? analysis.suggested_tasks : []
     for (const t of tasks) {
+      const projectId = typeof t.project_id === 'number' ? t.project_id : null
+      const newProjSuggestion = t.new_project_suggestion ?? null
       await sql`
-        INSERT INTO suggested_tasks (meeting_id, title, priority)
-        VALUES (${meetingId}, ${t.title}, ${t.priority || 'medium'})
+        INSERT INTO suggested_tasks (meeting_id, title, priority, project_id, new_project_suggestion)
+        VALUES (${meetingId}, ${t.title}, ${t.priority || 'medium'}, ${projectId}, ${newProjSuggestion})
       `
     }
 
