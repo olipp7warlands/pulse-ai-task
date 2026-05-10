@@ -554,37 +554,19 @@
       "norm_label": "route.ts"
     },
     {
-      "label": "CLAUDE_AUDIO_FORMATS",
+      "label": "FORMAT_MAP",
       "file_type": "code",
       "source_file": "app/api/meetings/[id]/audio/route.ts",
-      "source_location": "L14",
-      "id": "audio_route_claude_audio_formats",
+      "source_location": "L10",
+      "id": "audio_route_format_map",
       "community": 4,
-      "norm_label": "claude_audio_formats"
-    },
-    {
-      "label": "EXT_TO_FORMAT",
-      "file_type": "code",
-      "source_file": "app/api/meetings/[id]/audio/route.ts",
-      "source_location": "L17",
-      "id": "audio_route_ext_to_format",
-      "community": 4,
-      "norm_label": "ext_to_format"
-    },
-    {
-      "label": "convertToMp3()",
-      "file_type": "code",
-      "source_file": "app/api/meetings/[id]/audio/route.ts",
-      "source_location": "L21",
-      "id": "audio_route_converttomp3",
-      "community": 4,
-      "norm_label": "converttomp3()"
+      "norm_label": "format_map"
     },
     {
       "label": "POST()",
       "file_type": "code",
       "source_file": "app/api/meetings/[id]/audio/route.ts",
-      "source_location": "L38",
+      "source_location": "L15",
       "id": "audio_route_post",
       "community": 4,
       "norm_label": "post()"
@@ -1137,6 +1119,33 @@
       "id": "pm_app_claude_graphify",
       "community": 13,
       "norm_label": "graphify"
+    },
+    {
+      "label": "CLAUDE_AUDIO_FORMATS",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L14",
+      "community": 4,
+      "norm_label": "claude_audio_formats",
+      "id": "audio_route_claude_audio_formats"
+    },
+    {
+      "label": "EXT_TO_FORMAT",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L17",
+      "community": 4,
+      "norm_label": "ext_to_format",
+      "id": "audio_route_ext_to_format"
+    },
+    {
+      "label": "convertToMp3()",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L21",
+      "community": 4,
+      "norm_label": "converttomp3()",
+      "id": "audio_route_converttomp3"
     },
     {
       "label": "run_detect.py",
@@ -2443,30 +2452,10 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/api/meetings/[id]/audio/route.ts",
-      "source_location": "L14",
+      "source_location": "L10",
       "weight": 1.0,
       "source": "app_api_meetings_id_audio_route_ts",
-      "target": "audio_route_claude_audio_formats",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/api/meetings/[id]/audio/route.ts",
-      "source_location": "L17",
-      "weight": 1.0,
-      "source": "app_api_meetings_id_audio_route_ts",
-      "target": "audio_route_ext_to_format",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "app/api/meetings/[id]/audio/route.ts",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "app_api_meetings_id_audio_route_ts",
-      "target": "audio_route_converttomp3",
+      "target": "audio_route_format_map",
       "confidence_score": 1.0
     },
     {
@@ -2480,15 +2469,34 @@
       "target": "audio_route_post"
     },
     {
-      "relation": "calls",
-      "context": "call",
+      "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/api/meetings/[id]/audio/route.ts",
-      "source_location": "L66",
+      "source_location": "L14",
       "weight": 1.0,
-      "source": "audio_route_post",
-      "target": "audio_route_converttomp3",
-      "confidence_score": 1.0
+      "confidence_score": 1.0,
+      "source": "app_api_meetings_id_audio_route_ts",
+      "target": "audio_route_claude_audio_formats"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_api_meetings_id_audio_route_ts",
+      "target": "audio_route_ext_to_format"
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "app_api_meetings_id_audio_route_ts",
+      "target": "audio_route_converttomp3"
     },
     {
       "relation": "calls",
@@ -2500,6 +2508,17 @@
       "weight": 1.0,
       "source": "audio_route_post",
       "target": "lib_db_sql"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "confidence_score": 1.0,
+      "source": "audio_route_post",
+      "target": "audio_route_converttomp3"
     },
     {
       "relation": "imports_from",
@@ -4309,5 +4328,5 @@
       "source_file": "lib/types.ts"
     }
   ],
-  "built_at_commit": "a2cdd95e4af1b5e9b3ab048966c4bca3344eadf3"
+  "built_at_commit": "9586b9b1db2aab258551aace7b7e87663e624362"
 }

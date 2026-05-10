@@ -1,16 +1,16 @@
-# Graph Report - pm-app  (2026-05-09)
+# Graph Report - pm-app  (2026-05-10)
 
 ## Corpus Check
-- 34 files · ~23,043 words
+- 34 files · ~22,904 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 159 nodes · 244 edges · 18 communities (13 shown, 5 thin omitted)
+- 160 nodes · 245 edges · 18 communities (13 shown, 5 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 3 edges (avg confidence: 0.95)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `a2cdd95e`
+- Built from commit: `9586b9b1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -80,8 +80,8 @@ Cohesion: 0.13
 Nodes (13): PriorityTagProps, STYLES, ProjectChipProps, TaskCardProps, ActivityEntry, Link, LinkType, Priority (+5 more)
 
 ### Community 4 - "Community 4"
-Cohesion: 0.15
-Nodes (14): buildContext(), client, executeAction(), HistoryMessage, POST(), CLAUDE_AUDIO_FORMATS, convertToMp3(), EXT_TO_FORMAT (+6 more)
+Cohesion: 0.14
+Nodes (15): buildContext(), client, executeAction(), HistoryMessage, POST(), CLAUDE_AUDIO_FORMATS, convertToMp3(), EXT_TO_FORMAT (+7 more)
 
 ### Community 5 - "Community 5"
 Cohesion: 0.19
@@ -96,7 +96,7 @@ Cohesion: 0.4
 Nodes (3): archivo, metadata, viewport
 
 ## Knowledge Gaps
-- **40 isolated node(s):** `config`, `nextConfig`, `config`, `archivo`, `metadata` (+35 more)
+- **41 isolated node(s):** `config`, `nextConfig`, `config`, `archivo`, `metadata` (+36 more)
   These have ≤1 connection - possible missing edges or undocumented components.
 - **5 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -110,7 +110,7 @@ _Questions this graph is uniquely positioned to answer:_
 - **Why does `API: POST /agent (SSE)` connect `Community 1` to `Community 5`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **What connects `config`, `nextConfig`, `config` to the rest of the system?**
-  _40 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _41 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `Community 0` be split into smaller, more focused modules?**
   _Cohesion score 0.13 - nodes in this community are weakly interconnected._
 - **Should `Community 2` be split into smaller, more focused modules?**
