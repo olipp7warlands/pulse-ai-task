@@ -235,7 +235,7 @@
       "source_file": "app/page.tsx",
       "source_location": "L1",
       "id": "app_page_tsx",
-      "community": 3,
+      "community": 2,
       "norm_label": "page.tsx"
     },
     {
@@ -244,7 +244,7 @@
       "source_file": "app/page.tsx",
       "source_location": "L8",
       "id": "app_page_actioncolor",
-      "community": 3,
+      "community": 2,
       "norm_label": "actioncolor"
     },
     {
@@ -253,7 +253,7 @@
       "source_file": "app/page.tsx",
       "source_location": "L10",
       "id": "app_page_action_colors",
-      "community": 3,
+      "community": 2,
       "norm_label": "action_colors"
     },
     {
@@ -262,7 +262,7 @@
       "source_file": "app/page.tsx",
       "source_location": "L16",
       "id": "app_page_action_colors_dark",
-      "community": 3,
+      "community": 2,
       "norm_label": "action_colors_dark"
     },
     {
@@ -271,7 +271,7 @@
       "source_file": "app/page.tsx",
       "source_location": "L22",
       "id": "app_page_chatpage",
-      "community": 3,
+      "community": 2,
       "norm_label": "chatpage()"
     },
     {
@@ -280,7 +280,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L1",
       "id": "app_activity_page_tsx",
-      "community": 3,
+      "community": 2,
       "norm_label": "page.tsx"
     },
     {
@@ -289,7 +289,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L7",
       "id": "activity_page_activitydata",
-      "community": 3,
+      "community": 2,
       "norm_label": "activitydata"
     },
     {
@@ -298,7 +298,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L22",
       "id": "activity_page_dot_colors",
-      "community": 3,
+      "community": 2,
       "norm_label": "dot_colors"
     },
     {
@@ -307,7 +307,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L31",
       "id": "activity_page_action_labels",
-      "community": 3,
+      "community": 2,
       "norm_label": "action_labels"
     },
     {
@@ -316,7 +316,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L40",
       "id": "activity_page_tag_styles",
-      "community": 3,
+      "community": 2,
       "norm_label": "tag_styles"
     },
     {
@@ -325,7 +325,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L49",
       "id": "activity_page_formattime",
-      "community": 3,
+      "community": 2,
       "norm_label": "formattime()"
     },
     {
@@ -334,7 +334,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L63",
       "id": "activity_page_sectionlabel",
-      "community": 3,
+      "community": 2,
       "norm_label": "sectionlabel()"
     },
     {
@@ -343,7 +343,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L74",
       "id": "activity_page_donut",
-      "community": 3,
+      "community": 2,
       "norm_label": "donut()"
     },
     {
@@ -352,7 +352,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L124",
       "id": "activity_page_progressbar",
-      "community": 3,
+      "community": 2,
       "norm_label": "progressbar()"
     },
     {
@@ -361,7 +361,7 @@
       "source_file": "app/activity/page.tsx",
       "source_location": "L137",
       "id": "activity_page_activitypage",
-      "community": 3,
+      "community": 2,
       "norm_label": "activitypage()"
     },
     {
@@ -397,7 +397,7 @@
       "source_file": "app/api/agent/route.ts",
       "source_location": "L1",
       "id": "app_api_agent_route_ts",
-      "community": 5,
+      "community": 4,
       "norm_label": "route.ts"
     },
     {
@@ -406,7 +406,7 @@
       "source_file": "app/api/agent/route.ts",
       "source_location": "L8",
       "id": "agent_route_client",
-      "community": 5,
+      "community": 4,
       "norm_label": "client"
     },
     {
@@ -415,7 +415,7 @@
       "source_file": "app/api/agent/route.ts",
       "source_location": "L28",
       "id": "agent_route_executeaction",
-      "community": 5,
+      "community": 4,
       "norm_label": "executeaction()"
     },
     {
@@ -424,7 +424,7 @@
       "source_file": "app/api/agent/route.ts",
       "source_location": "L196",
       "id": "agent_route_buildcontext",
-      "community": 5,
+      "community": 4,
       "norm_label": "buildcontext()"
     },
     {
@@ -433,7 +433,7 @@
       "source_file": "app/api/agent/route.ts",
       "source_location": "L211",
       "id": "agent_route_historymessage",
-      "community": 5,
+      "community": 4,
       "norm_label": "historymessage"
     },
     {
@@ -442,7 +442,7 @@
       "source_file": "app/api/agent/route.ts",
       "source_location": "L213",
       "id": "agent_route_post",
-      "community": 5,
+      "community": 4,
       "norm_label": "post()"
     },
     {
@@ -550,16 +550,43 @@
       "source_file": "app/api/meetings/[id]/audio/route.ts",
       "source_location": "L1",
       "id": "app_api_meetings_id_audio_route_ts",
-      "community": 5,
+      "community": 4,
       "norm_label": "route.ts"
+    },
+    {
+      "label": "CLAUDE_AUDIO_FORMATS",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L14",
+      "id": "audio_route_claude_audio_formats",
+      "community": 4,
+      "norm_label": "claude_audio_formats"
+    },
+    {
+      "label": "EXT_TO_FORMAT",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L17",
+      "id": "audio_route_ext_to_format",
+      "community": 4,
+      "norm_label": "ext_to_format"
+    },
+    {
+      "label": "convertToMp3()",
+      "file_type": "code",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L21",
+      "id": "audio_route_converttomp3",
+      "community": 4,
+      "norm_label": "converttomp3()"
     },
     {
       "label": "POST()",
       "file_type": "code",
       "source_file": "app/api/meetings/[id]/audio/route.ts",
-      "source_location": "L10",
+      "source_location": "L38",
       "id": "audio_route_post",
-      "community": 5,
+      "community": 4,
       "norm_label": "post()"
     },
     {
@@ -649,7 +676,7 @@
       "source_file": "app/projects/page.tsx",
       "source_location": "L1",
       "id": "app_projects_page_tsx",
-      "community": 2,
+      "community": 3,
       "norm_label": "page.tsx"
     },
     {
@@ -658,7 +685,7 @@
       "source_file": "app/projects/page.tsx",
       "source_location": "L10",
       "id": "projects_page_status_labels",
-      "community": 2,
+      "community": 3,
       "norm_label": "status_labels"
     },
     {
@@ -667,7 +694,7 @@
       "source_file": "app/projects/page.tsx",
       "source_location": "L17",
       "id": "projects_page_statuses",
-      "community": 2,
+      "community": 3,
       "norm_label": "statuses"
     },
     {
@@ -676,7 +703,7 @@
       "source_file": "app/projects/page.tsx",
       "source_location": "L19",
       "id": "projects_page_projectspage",
-      "community": 2,
+      "community": 3,
       "norm_label": "projectspage()"
     },
     {
@@ -703,7 +730,7 @@
       "source_file": "components/BottomNav.tsx",
       "source_location": "L1",
       "id": "components_bottomnav_tsx",
-      "community": 3,
+      "community": 2,
       "norm_label": "bottomnav.tsx"
     },
     {
@@ -712,7 +739,7 @@
       "source_file": "components/BottomNav.tsx",
       "source_location": "L6",
       "id": "components_bottomnav_tabs",
-      "community": 3,
+      "community": 2,
       "norm_label": "tabs"
     },
     {
@@ -721,7 +748,7 @@
       "source_file": "components/BottomNav.tsx",
       "source_location": "L59",
       "id": "components_bottomnav_bottomnav",
-      "community": 3,
+      "community": 2,
       "norm_label": "bottomnav()"
     },
     {
@@ -793,7 +820,7 @@
       "source_file": "components/PriorityTag.tsx",
       "source_location": "L1",
       "id": "components_prioritytag_tsx",
-      "community": 2,
+      "community": 3,
       "norm_label": "prioritytag.tsx"
     },
     {
@@ -802,7 +829,7 @@
       "source_file": "components/PriorityTag.tsx",
       "source_location": "L3",
       "id": "components_prioritytag_styles",
-      "community": 2,
+      "community": 3,
       "norm_label": "styles"
     },
     {
@@ -811,7 +838,7 @@
       "source_file": "components/PriorityTag.tsx",
       "source_location": "L9",
       "id": "components_prioritytag_prioritytagprops",
-      "community": 2,
+      "community": 3,
       "norm_label": "prioritytagprops"
     },
     {
@@ -820,7 +847,7 @@
       "source_file": "components/PriorityTag.tsx",
       "source_location": "L14",
       "id": "components_prioritytag_prioritytag",
-      "community": 2,
+      "community": 3,
       "norm_label": "prioritytag()"
     },
     {
@@ -829,7 +856,7 @@
       "source_file": "components/ProjectChip.tsx",
       "source_location": "L1",
       "id": "components_projectchip_tsx",
-      "community": 2,
+      "community": 3,
       "norm_label": "projectchip.tsx"
     },
     {
@@ -838,7 +865,7 @@
       "source_file": "components/ProjectChip.tsx",
       "source_location": "L5",
       "id": "components_projectchip_projectchipprops",
-      "community": 2,
+      "community": 3,
       "norm_label": "projectchipprops"
     },
     {
@@ -847,7 +874,7 @@
       "source_file": "components/ProjectChip.tsx",
       "source_location": "L11",
       "id": "components_projectchip_projectchip",
-      "community": 2,
+      "community": 3,
       "norm_label": "projectchip()"
     },
     {
@@ -856,7 +883,7 @@
       "source_file": "components/TaskCard.tsx",
       "source_location": "L1",
       "id": "components_taskcard_tsx",
-      "community": 2,
+      "community": 3,
       "norm_label": "taskcard.tsx"
     },
     {
@@ -865,7 +892,7 @@
       "source_file": "components/TaskCard.tsx",
       "source_location": "L7",
       "id": "components_taskcard_taskcardprops",
-      "community": 2,
+      "community": 3,
       "norm_label": "taskcardprops"
     },
     {
@@ -874,7 +901,7 @@
       "source_file": "components/TaskCard.tsx",
       "source_location": "L12",
       "id": "components_taskcard_taskcard",
-      "community": 2,
+      "community": 3,
       "norm_label": "taskcard()"
     },
     {
@@ -901,7 +928,7 @@
       "source_file": "components/TopBar.tsx",
       "source_location": "L1",
       "id": "components_topbar_tsx",
-      "community": 3,
+      "community": 2,
       "norm_label": "topbar.tsx"
     },
     {
@@ -910,7 +937,7 @@
       "source_file": "components/TopBar.tsx",
       "source_location": "L3",
       "id": "components_topbar_topbarprops",
-      "community": 3,
+      "community": 2,
       "norm_label": "topbarprops"
     },
     {
@@ -919,7 +946,7 @@
       "source_file": "components/TopBar.tsx",
       "source_location": "L8",
       "id": "components_topbar_topbar",
-      "community": 3,
+      "community": 2,
       "norm_label": "topbar()"
     },
     {
@@ -946,7 +973,7 @@
       "source_file": "lib/schemas.ts",
       "source_location": "L1",
       "id": "lib_schemas_ts",
-      "community": 5,
+      "community": 4,
       "norm_label": "schemas.ts"
     },
     {
@@ -955,7 +982,7 @@
       "source_file": "lib/schemas.ts",
       "source_location": "L3",
       "id": "lib_schemas_agentinputschema",
-      "community": 5,
+      "community": 4,
       "norm_label": "agentinputschema"
     },
     {
@@ -964,7 +991,7 @@
       "source_file": "lib/schemas.ts",
       "source_location": "L11",
       "id": "lib_schemas_agentoutputschema",
-      "community": 5,
+      "community": 4,
       "norm_label": "agentoutputschema"
     },
     {
@@ -973,7 +1000,7 @@
       "source_file": "lib/schemas.ts",
       "source_location": "L17",
       "id": "lib_schemas_priorityenum",
-      "community": 5,
+      "community": 4,
       "norm_label": "priorityenum"
     },
     {
@@ -982,7 +1009,7 @@
       "source_file": "lib/schemas.ts",
       "source_location": "L19",
       "id": "lib_schemas_audioanalysisschema",
-      "community": 5,
+      "community": 4,
       "norm_label": "audioanalysisschema"
     },
     {
@@ -991,7 +1018,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L1",
       "id": "lib_types_ts",
-      "community": 2,
+      "community": 3,
       "norm_label": "types.ts"
     },
     {
@@ -1000,7 +1027,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L1",
       "id": "lib_types_status",
-      "community": 2,
+      "community": 3,
       "norm_label": "status"
     },
     {
@@ -1009,7 +1036,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L2",
       "id": "lib_types_priority",
-      "community": 2,
+      "community": 3,
       "norm_label": "priority"
     },
     {
@@ -1018,7 +1045,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L3",
       "id": "lib_types_linktype",
-      "community": 2,
+      "community": 3,
       "norm_label": "linktype"
     },
     {
@@ -1027,7 +1054,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L5",
       "id": "lib_types_project",
-      "community": 2,
+      "community": 3,
       "norm_label": "project"
     },
     {
@@ -1036,7 +1063,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L14",
       "id": "lib_types_task",
-      "community": 2,
+      "community": 3,
       "norm_label": "task"
     },
     {
@@ -1045,7 +1072,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L26",
       "id": "lib_types_link",
-      "community": 2,
+      "community": 3,
       "norm_label": "link"
     },
     {
@@ -1054,7 +1081,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L34",
       "id": "lib_types_activityentry",
-      "community": 2,
+      "community": 3,
       "norm_label": "activityentry"
     },
     {
@@ -1063,7 +1090,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L43",
       "id": "lib_types_agentresponse",
-      "community": 5,
+      "community": 4,
       "norm_label": "agentresponse"
     },
     {
@@ -1072,7 +1099,7 @@
       "source_file": "lib/types.ts",
       "source_location": "L49",
       "id": "lib_types_chatmessage",
-      "community": 3,
+      "community": 2,
       "norm_label": "chatmessage"
     },
     {
@@ -1155,7 +1182,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "chat page",
       "id": "chat_page"
     },
@@ -1168,7 +1195,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "activity page",
       "id": "activity_page"
     },
@@ -1298,7 +1325,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "lib/types.ts",
       "id": "lib_types"
     },
@@ -1311,7 +1338,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "topbar component",
       "id": "component_topbar"
     },
@@ -1324,7 +1351,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "bottomnav component",
       "id": "component_bottomnav"
     },
@@ -1467,7 +1494,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "type: chatmessage",
       "id": "type_chat_message"
     },
@@ -1545,7 +1572,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "projects page (web)",
       "id": "page_projects"
     },
@@ -1558,7 +1585,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "datetag component",
       "id": "component_date_tag"
     },
@@ -1571,7 +1598,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "prioritytag component",
       "id": "component_priority_tag"
     },
@@ -1584,7 +1611,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "projectchip component",
       "id": "component_project_chip"
     },
@@ -1597,7 +1624,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "taskcard component",
       "id": "component_task_card"
     },
@@ -1623,7 +1650,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "type: project",
       "id": "type_project"
     },
@@ -1636,7 +1663,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "type: task",
       "id": "type_task"
     },
@@ -1662,7 +1689,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "type: status",
       "id": "type_status"
     },
@@ -1675,7 +1702,7 @@
       "captured_at": null,
       "author": null,
       "contributor": null,
-      "community": 4,
+      "community": 5,
       "norm_label": "type: priority",
       "id": "type_priority"
     }
@@ -2416,11 +2443,52 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_audio_route_ts",
+      "target": "audio_route_claude_audio_formats",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L17",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_audio_route_ts",
+      "target": "audio_route_ext_to_format",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "app_api_meetings_id_audio_route_ts",
+      "target": "audio_route_converttomp3",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
       "source_location": "L6",
       "weight": 1.0,
       "confidence_score": 1.0,
       "source": "app_api_meetings_id_audio_route_ts",
       "target": "audio_route_post"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "source_file": "app/api/meetings/[id]/audio/route.ts",
+      "source_location": "L66",
+      "weight": 1.0,
+      "source": "audio_route_post",
+      "target": "audio_route_converttomp3",
+      "confidence_score": 1.0
     },
     {
       "relation": "calls",
@@ -4241,5 +4309,5 @@
       "source_file": "lib/types.ts"
     }
   ],
-  "built_at_commit": "06383ba84c6af477e50524e8cfa9947508bf6720"
+  "built_at_commit": "a2cdd95e4af1b5e9b3ab048966c4bca3344eadf3"
 }
